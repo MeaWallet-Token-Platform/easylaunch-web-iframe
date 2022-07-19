@@ -1,18 +1,18 @@
 <template>
-  <div class="mea-easy-launch-container">
+  <div class="mea-easy-launch-container" :class="defaultStyle">
     <loading :active="activeOverlay" :is-full-page="false" loader="bars" class="mea-overlay-style"/>
     <template v-if="!activeOverlay && !cardDataObject.panImage">
       <div class="mea-data mea-pan-result" v-if="encodedData.pan && cardDataObject.showPan">
-        <div class="mea-input-name">PAN:</div> {{encodedData.pan}}
+        <div class="mea-input-name">PAN:</div> <span class="mea-input-value">{{encodedData.pan}}</span>
       </div>
       <div class="mea-data mea-expiry-result" v-if="encodedData.expiry && cardDataObject.showExpiry" >
-        <div class="mea-input-name">Expiry:</div> {{formattedExpiry}}
+        <div class="mea-input-name">Expiry:</div> <span class="mea-input-value">{{formattedExpiry}}</span>
       </div>
       <div class="mea-data mea-cvv-result" v-if="encodedData.cvv && cardDataObject.showCvv">
-        <div class="mea-input-name">CVC:</div> {{encodedData.cvv}}
+        <div class="mea-input-name">CVC:</div> <span class="mea-input-value">{{encodedData.cvv}}</span>
       </div>
       <div class="mea-data mea-emboss-result" v-if="encodedData.embossname && cardDataObject.showEmbossName">
-        <div class="mea-input-name">Name:</div> {{encodedData.embossname}}
+        <div class="mea-input-name">Name:</div> <span class="mea-input-value">{{encodedData.embossname}}</span>
       </div>
     </template>
   </div>
@@ -42,7 +42,11 @@ export default {
     }
   },
   props: {
-    cardData: Object
+    cardData: Object,
+    defaultStyle: {
+      type: String,
+      default: 'default'
+    }
   },
   methods: {
     initEncryptionKey () {

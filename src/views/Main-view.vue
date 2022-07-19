@@ -1,5 +1,5 @@
 <template>
-  <EasyLaunch v-if="missingFields.length === 0 && initCardData" :cardData="getCardData"/>
+  <EasyLaunch v-if="missingFields.length === 0 && initCardData" :cardData="getCardData" :defaultStyle="params.defaultStyle"/>
 </template>
 <script>
   import EasyLaunch from '../components/EasyLaunch.vue'
